@@ -1,6 +1,7 @@
 
 package aiss.gitminer.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,6 +20,7 @@ public class User {
     @JsonProperty("id")
     private String id;
     @JsonProperty("username")
+    @JsonAlias("login")
     @NotEmpty(message = "The username cannot be empty")
     private String username;
     @JsonProperty("name")
