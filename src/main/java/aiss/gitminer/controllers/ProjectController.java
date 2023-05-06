@@ -4,6 +4,7 @@ import aiss.gitminer.model.Project;
 import aiss.gitminer.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/gitminer/projects")
 public class ProjectController {
+
     @Autowired
     ProjectRepository projectRepository;
 

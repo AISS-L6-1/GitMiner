@@ -15,6 +15,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "GMUser")     // Watch out: User is a reserved keyword in H2
 public class User {
+    public User(String id, String username, String name, String avatarUrl, String webUrl) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.avatarUrl = avatarUrl;
+        this.webUrl = webUrl;
+    }
 
     @Id
     @JsonProperty("id")

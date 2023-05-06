@@ -12,6 +12,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Comment")
 public class Comment {
+    public Comment(String id, String body, User author, String createdAt, String updatedAt) {
+        this.id = id;
+        this.body = body;
+        this.author = author;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Id
     @JsonProperty("id")

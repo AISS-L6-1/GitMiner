@@ -12,6 +12,13 @@ import java.util.List;
 @Entity
 @Table(name = "Project")
 public class Project {
+    public Project(String id, String name, String webUrl, List<Commit> commits, List<Issue> issues) {
+        this.id = id;
+        this.name = name;
+        this.webUrl = webUrl;
+        this.commits = commits;
+        this.issues = issues;
+    }
 
     @Id
     @JsonProperty("id")
