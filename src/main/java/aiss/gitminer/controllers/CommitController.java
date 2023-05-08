@@ -1,13 +1,10 @@
 package aiss.gitminer.controllers;
 
 import aiss.gitminer.model.Commit;
-import aiss.gitminer.model.Project;
 import aiss.gitminer.repositories.CommitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

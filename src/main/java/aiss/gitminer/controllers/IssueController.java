@@ -1,7 +1,6 @@
 package aiss.gitminer.controllers;
 
 import aiss.gitminer.model.Comment;
-import aiss.gitminer.model.Commit;
 import aiss.gitminer.model.Issue;
 import aiss.gitminer.repositories.IssueRepository;
 import org.springframework.beans.factory.annotation.Autowired;

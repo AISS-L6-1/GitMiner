@@ -1,13 +1,10 @@
 
 package aiss.gitminer.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Comment")
@@ -18,6 +15,9 @@ public class Comment {
         this.author = author;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Comment() {
     }
 
     @Id

@@ -1,11 +1,12 @@
 package aiss.gitminer.controllers;
 
 import aiss.gitminer.model.Comment;
-import aiss.gitminer.model.Issue;
 import aiss.gitminer.repositories.CommentRepository;
-import aiss.gitminer.repositories.CommitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;

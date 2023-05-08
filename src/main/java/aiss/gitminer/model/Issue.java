@@ -1,13 +1,9 @@
 
 package aiss.gitminer.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -30,6 +26,9 @@ public class Issue {
         this.downvotes = downvotes;
         this.webUrl = webUrl;
         this.comments = comments;
+    }
+
+    public Issue() {
     }
 
     @Id

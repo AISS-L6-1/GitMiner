@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Commit")
@@ -23,6 +22,9 @@ public class Commit {
         this.committerEmail = committerEmail;
         this.committedDate = committedDate;
         this.webUrl = webUrl;
+    }
+
+    public Commit() {
     }
 
     @Id
