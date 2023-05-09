@@ -38,8 +38,7 @@ public class PostMockTest {
                 "06/05/2023", "Pablo Caballero", "pabcabmar03@gmail.com",
                 "06/05/2023", "www.webUrl.com");
         Issue mockIssue = new Issue("1", "1", "title", "description", "state", "06/05/2023", "06/05/2023",
-                "06/05/2023", List.of("label 1", "label 2", "label 3"), mockUser, mockUser, 5, 7,
-                "www.webUrl.com", List.of(mockComment));
+                "06/05/2023", List.of("label 1", "label 2", "label 3"), mockUser, mockUser, 5, 7, List.of(mockComment));
 
         // aquí meto un dato incorrecto según el modelo de Project en caso de que good sea false
         Project mockProject = new Project("1", good ? "project name" : "", "www.webUrl.com", List.of(mockCommit), List.of(mockIssue));

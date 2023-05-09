@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "Issue")
 public class Issue {
 
-    public Issue(String id, String refId, String title, String description, String state, String createdAt, String updatedAt, String closedAt, List<String> labels, User author, User assignee, Integer upvotes, Integer downvotes, String webUrl, List<Comment> comments) {
+    public Issue(String id, String refId, String title, String description, String state, String createdAt, String updatedAt, String closedAt, List<String> labels, User author, User assignee, Integer upvotes, Integer downvotes, List<Comment> comments) {
         this.id = id;
         this.refId = refId;
         this.title = title;
@@ -24,7 +24,6 @@ public class Issue {
         this.assignee = assignee;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
-        this.webUrl = webUrl;
         this.comments = comments;
     }
 
@@ -68,8 +67,6 @@ public class Issue {
     @JsonProperty("downvotes")
     private Integer downvotes;
 
-    @JsonProperty("web_url")
-    private String webUrl;
 
     @JsonProperty("comments")
     @OneToMany(cascade = CascadeType.ALL)
@@ -178,14 +175,6 @@ public class Issue {
 
     public void setDownvotes(Integer downvotes) {
         this.downvotes = downvotes;
-    }
-
-    public String getWebUrl() {
-        return webUrl;
-    }
-
-    public void setWebUrl(String webUrl) {
-        this.webUrl = webUrl;
     }
 
     public List<Comment> getComments() {
