@@ -1,6 +1,6 @@
 package aiss.gitminer.controllers;
 
-import aiss.gitminer.exceptions.ProjectNotFoundException;
+import aiss.gitminer.exceptions.ResourceNotFoundException;
 import aiss.gitminer.model.Project;
 import aiss.gitminer.repositories.ProjectRepository;
 import io.swagger.v3.oas.annotations.Operation;
@@ -82,10 +82,11 @@ public class ProjectController {
     })
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
-    public Project findOne(@Parameter(description = "Id of the project to be found") @PathVariable String id) throws ProjectNotFoundException {
+    public Project findOne(@Parameter(description = "Id of the project to be found") @PathVariable String id)
+            throws ResourceNotFoundException {
         Optional<Project> project = projectRepository.findById(id);
         if (!project.isPresent()) {
-            throw new ProjectNotFoundException();
+            throw new ResourceNotFoundException("Project not found");
         }
         return project.get();
     }

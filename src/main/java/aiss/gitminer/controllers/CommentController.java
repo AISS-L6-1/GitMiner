@@ -1,5 +1,6 @@
 package aiss.gitminer.controllers;
 
+import aiss.gitminer.exceptions.ResourceNotFoundException;
 import aiss.gitminer.model.Comment;
 import aiss.gitminer.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,12 @@ public class CommentController {
 
     // GET http://localhost:8080/gitminer/comments/{id}
     @GetMapping("/{id}")
-    public Comment findOne(@PathVariable String id) {
-        Optional<Comment> comment =  commentRepository.findById(id);
+    public Comment findOne(@PathVariable String id)
+            throws ResourceNotFoundException {
+        Optional<Comment> comment = commentRepository.findById(id);
+        if (!comment.isPresent()) {
+            throw new ResourceNotFoundException("Comment not found");
+        }
         return comment.get();
     }
 }
