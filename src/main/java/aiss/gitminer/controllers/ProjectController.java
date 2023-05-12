@@ -50,7 +50,7 @@ public class ProjectController {
     // GET http://localhost:8080/gitminer/projects
     @Operation(
             summary = "Find all projects",
-            description = "Retrieve every project found in database, with optinal pagination and sorting",
+            description = "Retrieve every project found in database, with optional pagination and sorting",
             tags = {"projects", "get"})
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Projects found succesfully", content = {@Content(schema = @Schema(implementation = Project.class), mediaType = "applications/json")})
