@@ -1,0 +1,773 @@
+{
+	"info": {
+		"_postman_id": "ec245539-4115-430b-b84b-1b094c095ba1",
+		"name": "GitMiner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26139374"
+	},
+	"item": [
+		{
+			"name": "Good request GitHubMiner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\"&& \"message\"&& \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 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",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/projects/:owner/:repo?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"projects",
+						":owner",
+						":repo"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "owner",
+							"value": "spring-projects"
+						},
+						{
+							"key": "repo",
+							"value": "spring-framework"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad request GitHubMiner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\"&& \"message\"&& \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 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",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/api/projects/:owner/:repo?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"projects",
+						":owner",
+						":repo"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "owner",
+							"value": "adsasdonsdkjgn"
+						},
+						{
+							"key": "repo",
+							"value": "adsasdonsdkjgn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Good Resquest GitLabMiner all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name and web_url; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    for(var i=0;i<jsonData.lenght;i++) {",
+							"        pm.expect(jsonData[i]).to.have.property(\"id\" && \"name\" && \"web_url\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"status\"&& \"error\"&& \"path\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projects?since=5&sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "since",
+							"value": "5"
+						},
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad Resquest GitLabMiner all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name and web_url; correct functioning\", function () {",
+							"    if(pm.response.to.have.status(200)) {",
+							"        var jsonData = pm.response.json();",
+							"        for(var i=0;i<jsonData.lenght;i++) {",
+							"            pm.expect(jsonData[i]).to.have.property(\"id\" && \"name\" && \"web_url\");",
+							"        }",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"status\"&& \"error\"&& \"path\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projecs?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projecs"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Good Resquest GitLabMiner id Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name and web_url; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\" && \"web_url\" && \"commits\" && \"issues\");",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"status\"&& \"error\"&& \"path\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projects/:id?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projects",
+						":id"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4207231"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bad Resquest GitLabMiner id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name and web_url; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\" && \"web_url\" && \"commits\" && \"issues\");",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\"&& \"message\" && \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projects/:id?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projects",
+						":id"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "000000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post GitHubMiner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"});",
+							"",
+							"pm.test(\"Status code is 424: failed dependency.\", function () {",
+							"    pm.response.to.have.status(424);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\"&& \"message\"&& \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/projects/:owner/:repo?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"projects",
+						":owner",
+						":repo"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "owner",
+							"value": "spring-projects"
+						},
+						{
+							"key": "repo",
+							"value": "spring-framework"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post GitLabMiner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"});",
+							"",
+							"pm.test(\"Status code is 424: failed dependency.\", function () {",
+							"    pm.response.to.have.status(424);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\"&& \"message\"&& \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/projects/:id?sinceIssues=5&sinceCommits=5&maxPages=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"projects",
+						":id"
+					],
+					"query": [
+						{
+							"key": "sinceIssues",
+							"value": "5"
+						},
+						{
+							"key": "sinceCommits",
+							"value": "5"
+						},
+						{
+							"key": "maxPages",
+							"value": "1"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4207231"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GitMiner all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    if(pm.response.to.have.status(200)) {",
+							"        var jsonData = pm.response.json();",
+							"        for(var i=0;i<jsonData.lenght;i++) {",
+							"            pm.expect(jsonData[i]).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"        }",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"status\"&& \"error\" && \"path\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gitminer/projects?page=0&size=10&order=+id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gitminer",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "order",
+							"value": "+id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GitMiner id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    if(pm.response.to.have.status(200)) {",
+							"        var jsonData = pm.response.json();",
+							"        for(var i=0;i<jsonData.lenght;i++) {",
+							"            pm.expect(jsonData[i]).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"        }",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code is 404: project not found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"statusCode\" && \"message\" && \"description\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gitminer/projects/:id?page=0&size=10&order=+id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gitminer",
+						"projects",
+						":id"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "order",
+							"value": "+id"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "bueno = 1148753; malo = 1148752; ejemplo de post = 1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post GItMiner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200: correct functioning.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: id, name, web_url, commits and issues; correct functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"id\" && \"name\"&& \"web_url\"&& \"commits\"&&\"issues\" );",
+							"});",
+							"",
+							"pm.test(\"Status code is 400: validation error.\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response contains the follownign properties: timestamp, statusCode, message and description; bad functioning\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"timestamp\" && \"status\" && \"error\" && \"path\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"name\": \"project name\",\n    \"web_url\": \"www.webUrl.com\",\n    \"commits\": [\n        {\n            \"id\": \"1\",\n            \"title\": \"title\",\n            \"message\": \"message\",\n            \"author_name\": \"Pablo Caballero\",\n            \"author_email\": \"pabcabmar03@gmail.com\",\n            \"authored_date\": \"06/05/2023\",\n            \"committer_name\": \"Pablo Caballero\",\n            \"committer_email\": \"pabcabmar03@gmail.com\",\n            \"committed_date\": \"06/05/2023\",\n            \"web_url\": \"www.webUrl.com\"\n        }\n    ],\n    \"issues\": [\n        {\n            \"id\": \"1\",\n            \"ref_id\": \"1\",\n            \"title\": \"title\",\n            \"description\": \"description\",\n            \"state\": \"state\",\n            \"created_at\": \"06/05/2023\",\n            \"updated_at\": \"06/05/2023\",\n            \"closed_at\": \"06/05/2023\",\n            \"labels\": [\n                \"label 1\",\n                \"label 2\",\n                \"label 3\"\n            ],\n            \"author\": {\n                \"id\": \"1\",\n                \"username\": \"Pablo Caballero\",\n                \"name\": \"Pablo\",\n                \"avatar_url\": \"www.avatarUrl.com\",\n                \"web_url\": \"www.webUrl.com\"\n            },\n            \"assignee\": {\n                \"id\": \"1\",\n                \"username\": \"Pablo Caballero\",\n                \"name\": \"Pablo\",\n                \"avatar_url\": \"www.avatarUrl.com\",\n                \"web_url\": \"www.webUrl.com\"\n            },\n            \"upvotes\": 5,\n            \"downvotes\": 7,\n            \"comments\": [\n                {\n                    \"id\": \"1\",\n                    \"body\": \"lorem ipsum dolor sit aemet\",\n                    \"author\": {\n                        \"id\": \"1\",\n                        \"username\": \"Pablo Caballero\",\n                        \"name\": \"Pablo\",\n                        \"avatar_url\": \"www.avatarUrl.com\",\n                        \"web_url\": \"www.webUrl.com\"\n                    },\n                    \"created_at\": \"06/05/2023\",\n                    \"updated_at\": \"06/05/2023\"\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/gitminer/projects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gitminer",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
